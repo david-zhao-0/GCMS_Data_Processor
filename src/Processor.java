@@ -51,9 +51,16 @@ public class Processor {
 				writer.write(subHeaders.get(i) + ",");
 			}
 			
-			writer.newLine();
+			writer.newLine();			
+			
+			// attempt at differentiating between different sample types LF/LB/HF/HB
+//			List<String> lfSamples = new ArrayList<String>();
+//			List<String> lbSamples = new ArrayList<String>();
+//			List<String> hfSamples = new ArrayList<String>();
+//			List<String> hbSamples = new ArrayList<String>();
 			
 			// gets and writes first line of data to processed data file, as well as sample name
+			// first set of data is LF, followed by LB, then HF, then HB
 			
 			writer.write(headers[0].substring(headers[0].indexOf("_") + 1) + ",");
 			
@@ -71,6 +78,15 @@ public class Processor {
 			
 			while (line != null) {
 				String[] data = line.split(",");
+//				if (data[0].contains("LF")) {
+//					lfSamples.add(line); 
+//				} else if (data[0].contains("LB")) {
+//					lbSamples.add(line);
+//				} else if (data[0].contains("HF")) {
+//					hfSamples.add(line);
+//				} else {
+//					hbSamples.add(line);
+//				}
 				
 				writer.write(data[0].substring(data[0].indexOf("_") + 1) + ",");
 				
