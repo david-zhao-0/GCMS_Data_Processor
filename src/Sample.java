@@ -1,12 +1,9 @@
+import java.util.*;
 
 public class Sample {
 	private String name;
 	private int sortOrder;
-	private String metabolite;
-	private String peak1;
-	private String peak2;
-	private int peak1Data;
-	private int peak2Data;
+	private ArrayList<Metabolite> metabolites;
 	
 	// Name Getter
 	public String getName() {
@@ -37,54 +34,14 @@ public class Sample {
 		}
 	}
 	
-	// Metabolite Name Getter
-	public String getMetabolite() {
-		return metabolite;
+	// metabolites getter
+	public ArrayList<Metabolite> getMetabolites() {
+		return this.metabolites;
 	}
 	
-	// Metabolite Name Setter
-	public void setMetabolite(String newMetabolite) {
-		this.metabolite = newMetabolite;
-	}	
-	
-	// peak1 Getter
-	public String getPeak1() {
-		return peak1;
-	}
-	
-	// peak1 Setter
-	public void setPeak1(String peak1) {
-		this.peak1 = peak1;
-	}
-	
-	// peak2 Getter
-	public String getPeak2() {
-		return peak2;
-	}
-	
-	// peak2 Setter
-	public void setPeak2(String peak2) {
-		this.name = peak2;
-	}
-	
-	// peak1Data Getter
-	public int getPeak1Data() {
-		return peak1Data;
-	}
-	
-	// peak1Data Setter
-	public void setPeak1Data(int peak1Data) {
-		this.peak1Data = peak1Data;
-	}
-	
-	// peak2Data Getter
-	public int getPeak2Data() {
-		return peak2Data;
-	}
-	
-	// peak2Data Setter
-	public void setPeak2Data(int peak2Data) {
-		this.peak2Data = peak2Data;
+	// metabolites setter
+	public void addMetabolite(Metabolite metabolite) {
+		this.metabolites.add(metabolite);
 	}
 	
 }

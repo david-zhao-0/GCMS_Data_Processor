@@ -4,6 +4,11 @@ import java.util.*;
 public class Processor { 
 
 	public static void main(String[] args) {
+		preProcess();
+		sortSamples();
+	}
+	
+	public static void preProcess() {
 		BufferedReader reader;
 		try {
 			
@@ -28,7 +33,7 @@ public class Processor {
 			writer.write(",");
 			
 			for (int i = 0; i < mainHeaders.size(); i++) {
-				writer.write(mainHeaders.get(i) + ", , ,");
+				writer.write(mainHeaders.get(i) + ",,,");
 			}
 			
 			writer.newLine();
@@ -66,7 +71,7 @@ public class Processor {
 			
 			for (int i = 1; i < headers.length; i = i + 6) {
 				writer.write(headers[i + 3] + ",");
-				writer.write(headers[i + 5] + ", ,");
+				writer.write(headers[i + 5] + ",,");
 			}
 			writer.newLine();
 			
@@ -92,7 +97,7 @@ public class Processor {
 				
 				for (int i = 1; i < data.length - 3; i = i + 6) {
 					writer.write(data[i + 3] + ",");
-					writer.write(data[i + 5] + ", ,");
+					writer.write(data[i + 5] + ",,");
 				}
 				writer.newLine();
 				line = reader.readLine();	
@@ -102,7 +107,32 @@ public class Processor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+	public static void sortSamples() {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("src/processed_data.csv"));
+			String line = reader.readLine();
+			String[] metaboliteArray = line.split(",");
+			ArrayList<Metabolite> metaboliteList = new ArrayList<Metabolite>();
+			for (int i = 0; i < metaboliteArray.length; i++) {
+				if (metaboliteArray[i] != null) {
+					Metabolite metabolite = new Metabolite(metaboliteArray[i]);
+					metabolite.setName(metaboliteArray[i]);
+					metaboliteList.add(metabolite);
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void calculateRatios() {
+		
+	}
+	
+	public static void calculateAverages() {
+		
+	}
 }
