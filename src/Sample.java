@@ -2,8 +2,21 @@ import java.util.*;
 
 public class Sample {
 	private String name;
+	private String sampleType;
 	private int sortOrder;
-	private ArrayList<Metabolite> metabolites;
+	private List<Metabolite> metabolites;
+	
+	public Sample(String name) {
+		this.name = name;
+		this.metabolites = new ArrayList<Metabolite>();
+	}
+	
+	// Copy constructor
+	public Sample(Sample sample) {
+		this.name = sample.name;
+		this.sampleType = sample.sampleType;
+		this.metabolites = sample.metabolites;
+	}
 	
 	// Name Getter
 	public String getName() {
@@ -15,13 +28,29 @@ public class Sample {
 		this.name = newName;
 	}
 	
-	// sortOrder getter
-	// returns the sort order number based on the name of the sample, with order LF<LB<HF<HB (uses cases) -> note that the switch condition
-	// requires for the first 2 character indexes to be LF/LB/HF/HB, or it will be at the top (return -1)
+	// Sample type getter
+	public String getSampleType() {
+		return sampleType;
+	}
+
+	// Sample type setter
+	public void setSampleType(String sampleName) {
+		if (sampleName.contains("LF")) {
+			this.sampleType = "LF";
+		} else if (sampleName.contains("LB")) {
+			this.sampleType = "LB";
+		} else if (sampleName.contains("HF")) {
+			this.sampleType = "HF";
+		} else if (sampleName.contains("HB")) {
+			this.sampleType = "HB";
+		} else {
+			this.sampleType = "N/A";
+		}
+	}
 	
 	public int getSortOrder() {
-		switch (this.name.substring(0, 2)) {
-		case "LF": 
+		switch (name.substring(0, 2)) {
+		case "LF":
 			return 0;
 		case "LB":
 			return 1;
@@ -29,13 +58,13 @@ public class Sample {
 			return 2;
 		case "HB":
 			return 3;
-		default: 
+		default:
 			return -1;
 		}
 	}
 	
 	// metabolites getter
-	public ArrayList<Metabolite> getMetabolites() {
+	public List<Metabolite> getMetabolites() {
 		return this.metabolites;
 	}
 	
@@ -44,4 +73,7 @@ public class Sample {
 		this.metabolites.add(metabolite);
 	}
 	
+	public void setMetaboliteList(ArrayList<Metabolite> mList) {
+		this.metabolites = (List<Metabolite>) mList.clone();		
+	}
 }

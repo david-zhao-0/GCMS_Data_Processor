@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Metabolite {
 	// Creates variables for each metabolite to be analyzed
@@ -9,12 +10,23 @@ public class Metabolite {
 	private String name;
 	private String peak1;
 	private String peak2;
-	private int peak1Data;
-	private int peak2Data;
+	private double peak1Data;
+	private double peak2Data;
+	private double ratio;
 	
 	// Metabolite constructor
-	Metabolite(String name) {
+	public Metabolite(String name) {
 		this.name = name;
+	}
+	
+	// Copy constructor
+	public Metabolite(Metabolite metabolite) {
+		this.name = metabolite.name;
+		this.peak1 = metabolite.peak1;
+		this.peak2 = metabolite.peak2;
+		this.peak1Data = metabolite.peak1Data;
+		this.peak2Data = metabolite.peak2Data;
+		this.ratio = metabolite.ratio;
 	}
 	
 	// Name Getter
@@ -45,27 +57,31 @@ public class Metabolite {
 	
 	// peak2 Setter
 	public void setPeak2(String peak2) {
-		this.name = peak2;
+		this.peak2 = peak2;
 	}
 	
 	// peak1Data Getter
-	public int getPeak1Data() {
+	public double getPeak1Data() {
 		return peak1Data;
 	}
 	
 	// peak1Data Setter
-	public void setPeak1Data(int peak1Data) {
+	public void setPeak1Data(double peak1Data) {
 		this.peak1Data = peak1Data;
 	}
 	
 	// peak2Data Getter
-	public int getPeak2Data() {
+	public double getPeak2Data() {
 		return peak2Data;
 	}
 	
 	// peak2Data Setter
-	public void setPeak2Data(int peak2Data) {
+	public void setPeak2Data(double peak2Data) {
 		this.peak2Data = peak2Data;
 	}
 	
+	// ratio Getter
+	public double getRatio() {
+		return this.peak1Data/this.peak2Data;
+	}
 }
