@@ -1,2 +1,1 @@
-RAW DATA must be named "data.csv"
-"processed_data.csv" contains the processed data, separated by metabolite, without sample order, peak ratios, or averages calculated.
+Likely won't be continuing with this project further unless I need to use GCMS again
